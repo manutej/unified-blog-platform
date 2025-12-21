@@ -167,7 +167,7 @@ export default async function BlogPage({
         )}
 
         {/* Prerequisites */}
-        {metadata.prerequisites && metadata.prerequisites.length > 0 && (
+        {metadata.prerequisites && (
           <div className="mt-4 p-4 rounded-lg bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-yellow-400">
             <h3 className="text-sm font-bold text-yellow-900 dark:text-yellow-200 mb-2 flex items-center gap-2">
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
@@ -175,14 +175,20 @@ export default async function BlogPage({
               </svg>
               Prerequisites
             </h3>
-            <ul className="text-sm text-yellow-900 dark:text-yellow-200 space-y-1">
-              {metadata.prerequisites.map((prereq, index) => (
-                <li key={index} className="flex items-center gap-2">
-                  <span>•</span>
-                  <span>{prereq}</span>
-                </li>
-              ))}
-            </ul>
+            {Array.isArray(metadata.prerequisites) ? (
+              <ul className="text-sm text-yellow-900 dark:text-yellow-200 space-y-1">
+                {metadata.prerequisites.map((prereq, index) => (
+                  <li key={index} className="flex items-center gap-2">
+                    <span>•</span>
+                    <span>{prereq}</span>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p className="text-sm text-yellow-900 dark:text-yellow-200">
+                {metadata.prerequisites}
+              </p>
+            )}
           </div>
         )}
       </header>
