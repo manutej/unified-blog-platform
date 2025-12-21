@@ -15,7 +15,7 @@ prerequisites:
   - "Familiarity with vector spaces and similarity metrics"
   - "Fundamental information theory concepts (entropy, mutual information)"
   - "Programming experience in Python or TypeScript"
-  - "Vaswani et al. (2017) - "Attention Is All You Need""
+  - 'Vaswani et al. (2017) - "Attention Is All You Need"'
 tags:
   - "context-engineering"
   - "rag"
