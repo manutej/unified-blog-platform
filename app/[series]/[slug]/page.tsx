@@ -8,9 +8,26 @@
  */
 
 import { getBlogBySlug, getAllBlogs, getAdjacentBlogs, getDifficultyColor } from '@/lib/blog';
-import { getSeriesConfig } from '@/lib/series-config';
+import { getSeriesConfig, getAllSeries } from '@/lib/series-config';
 import BlogContent from '@/components/core/BlogContent';
 import Link from 'next/link';
+
+export async function generateStaticParams() {
+  const series = getAllSeries();
+  const params: { series: string; slug: string }[] = [];
+
+  for (const s of series) {
+    const blogs = getAllBlogs(s.id);
+    for (const blog of blogs) {
+      params.push({
+        series: s.id,
+        slug: blog.slug,
+      });
+    }
+  }
+
+  return params;
+}
 
 export default async function BlogPage({
   params,

@@ -8,10 +8,17 @@
  */
 
 import { getAllBlogs } from '@/lib/blog';
-import { getSeriesConfig } from '@/lib/series-config';
+import { getSeriesConfig, getAllSeries } from '@/lib/series-config';
 import BlogCard from '@/components/core/BlogCard';
 import BlogGrid from '@/components/core/BlogGrid';
 import Link from 'next/link';
+
+export async function generateStaticParams() {
+  const series = getAllSeries();
+  return series.map((s) => ({
+    series: s.id,
+  }));
+}
 
 export default async function SeriesPage({
   params,
