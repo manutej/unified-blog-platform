@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700">
+  <defs>
+    <style>
+      .title { font-family: 'Segoe UI', Arial, sans-serif; font-size: 24px; font-weight: bold; fill: #0078D4; }
+      .heading { font-family: 'Segoe UI', Arial, sans-serif; font-size: 18px; font-weight: bold; fill: #333; }
+      .label { font-family: 'Segoe UI', Arial, sans-serif; font-size: 14px; fill: #333; }
+      .label-white { font-family: 'Segoe UI', Arial, sans-serif; font-size: 14px; fill: #fff; font-weight: bold; }
+      .value { font-family: 'Segoe UI', Arial, sans-serif; font-size: 20px; font-weight: bold; fill: #10893E; }
+      .value-cost { font-family: 'Segoe UI', Arial, sans-serif; font-size: 20px; font-weight: bold; fill: #D13438; }
+      .formula { font-family: 'Segoe UI', Arial, sans-serif; font-size: 11px; fill: #5E5E5E; font-style: italic; }
+      .component-benefit { fill: #10893E; stroke: #fff; stroke-width: 2; }
+      .component-cost { fill: #D13438; stroke: #fff; stroke-width: 2; }
+      .banner { fill: #10893E; stroke: none; }
+      .banner-text { font-family: 'Segoe UI', Arial, sans-serif; font-size: 20px; font-weight: bold; fill: #fff; }
+    </style>
+  </defs>
+
+  <!-- Title -->
+  <text x="600" y="30" text-anchor="middle" class="title">Five-Component ROI Model</text>
+
+  <!-- Top Banner: Total Benefits -->
+  <rect x="100" y="60" width="1000" height="50" class="banner" />
+  <text x="600" y="92" text-anchor="middle" class="banner-text">TOTAL BENEFITS</text>
+
+  <!-- Five Components -->
+  <g id="components">
+    <!-- Component 1: Time Savings -->
+    <rect x="100" y="140" width="180" height="200" class="component-benefit" />
+    <text x="190" y="165" text-anchor="middle" class="label-white">COMPONENT 1</text>
+    <text x="190" y="205" text-anchor="middle" class="label-white">Time Savings</text>
+    <text x="190" y="225" text-anchor="middle" class="label-white">(Productivity</text>
+    <text x="190" y="245" text-anchor="middle" class="label-white">Gains)</text>
+
+    <!-- Formula -->
+    <rect x="110" y="260" width="160" height="50" style="fill:#E1F0D7; stroke:none;" />
+    <text x="190" y="280" text-anchor="middle" class="formula">(Time Before - Time After)</text>
+    <text x="190" y="295" text-anchor="middle" class="formula">× Volume × Rate</text>
+
+    <!-- Value -->
+    <text x="190" y="330" text-anchor="middle" class="value">$123,958</text>
+
+    <!-- Component 2: Cost Avoidance -->
+    <rect x="300" y="140" width="180" height="200" class="component-benefit" />
+    <text x="390" y="165" text-anchor="middle" class="label-white">COMPONENT 2</text>
+    <text x="390" y="205" text-anchor="middle" class="label-white">Cost</text>
+    <text x="390" y="225" text-anchor="middle" class="label-white">Avoidance</text>
+
+    <rect x="310" y="260" width="160" height="50" style="fill:#E1F0D7; stroke:none;" />
+    <text x="390" y="280" text-anchor="middle" class="formula">Avoided FTE + Services</text>
+    <text x="390" y="295" text-anchor="middle" class="formula">+ Tools Consolidated</text>
+
+    <text x="390" y="330" text-anchor="middle" class="value">$346,250</text>
+
+    <!-- Component 3: Revenue Impact -->
+    <rect x="500" y="140" width="180" height="200" class="component-benefit" />
+    <text x="590" y="165" text-anchor="middle" class="label-white">COMPONENT 3</text>
+    <text x="590" y="205" text-anchor="middle" class="label-white">Revenue</text>
+    <text x="590" y="225" text-anchor="middle" class="label-white">Impact</text>
+
+    <rect x="510" y="260" width="160" height="50" style="fill:#E1F0D7; stroke:none;" />
+    <text x="590" y="280" text-anchor="middle" class="formula">Sales Acceleration</text>
+    <text x="590" y="295" text-anchor="middle" class="formula">+ Retention</text>
+
+    <text x="590" y="330" text-anchor="middle" class="value">$50,000,000</text>
+
+    <!-- Component 4: Quality Improvements -->
+    <rect x="700" y="140" width="180" height="200" class="component-benefit" />
+    <text x="790" y="165" text-anchor="middle" class="label-white">COMPONENT 4</text>
+    <text x="790" y="205" text-anchor="middle" class="label-white">Quality</text>
+    <text x="790" y="225" text-anchor="middle" class="label-white">Improvements</text>
+
+    <rect x="710" y="260" width="160" height="50" style="fill:#E1F0D7; stroke:none;" />
+    <text x="790" y="280" text-anchor="middle" class="formula">Errors Prevented</text>
+    <text x="790" y="295" text-anchor="middle" class="formula">× Cost per Error</text>
+
+    <text x="790" y="330" text-anchor="middle" class="value">$37,500</text>
+
+    <!-- Component 5: Implementation Costs (RED) -->
+    <rect x="920" y="140" width="180" height="200" class="component-cost" />
+    <text x="1010" y="165" text-anchor="middle" class="label-white">COMPONENT 5</text>
+    <text x="1010" y="205" text-anchor="middle" class="label-white">Implementation</text>
+    <text x="1010" y="225" text-anchor="middle" class="label-white">Costs</text>
+
+    <rect x="930" y="260" width="160" height="50" style="fill:#F8E1E1; stroke:none;" />
+    <text x="1010" y="280" text-anchor="middle" class="formula">Licensing + Setup</text>
+    <text x="1010" y="295" text-anchor="middle" class="formula">+ Training + Support</text>
+
+    <text x="1010" y="330" text-anchor="middle" class="value-cost">$16,400</text>
+  </g>
+
+  <!-- ROI Calculation Section -->
+  <g id="roi-calc" transform="translate(100, 380)">
+    <rect x="0" y="0" width="1000" height="250" style="fill:#F3F3F3; stroke:#0078D4; stroke-width:2;" />
+
+    <text x="500" y="30" text-anchor="middle" class="heading">ROI CALCULATION</text>
+
+    <!-- Formula breakdown -->
+    <text x="20" y="70" class="label">Total Benefits = Component 1 + Component 2 + Component 3 + Component 4</text>
+    <text x="20" y="90" class="label">                = $123,958 + $346,250 + $50,000,000 + $37,500</text>
+    <text x="20" y="110" class="label" style="font-weight:bold;">                = $50,507,708</text>
+
+    <text x="20" y="140" class="label">Total Costs = Component 5 = $16,400</text>
+
+    <text x="20" y="170" class="label">ROI % = ((Total Benefits - Total Costs) / Total Costs) × 100</text>
+    <text x="20" y="190" class="label">      = (($50,507,708 - $16,400) / $16,400) × 100</text>
+    <text x="20" y="210" class="label" style="font-weight:bold; font-size:24px; fill:#10893E;">      = 308,000%</text>
+
+    <text x="20" y="235" class="label">Payback Period = $16,400 / ($50,507,708 / 12) = 0.0039 months (2.8 hours)</text>
+  </g>
+
+  <!-- Icons (simplified) -->
+  <g id="icons">
+    <!-- Clock icon for Component 1 -->
+    <circle cx="190" cy="120" r="12" style="fill:none; stroke:#fff; stroke-width:2;" />
+    <path d="M 190 113 L 190 120 L 195 120" style="stroke:#fff; stroke-width:2; fill:none;" />
+
+    <!-- Piggy bank for Component 2 -->
+    <circle cx="390" cy="120" r="12" style="fill:none; stroke:#fff; stroke-width:2;" />
+    <text x="390" y="126" text-anchor="middle" style="font-size:16px; fill:#fff; font-weight:bold;">$</text>
+
+    <!-- Graph for Component 3 -->
+    <path d="M 578 125 L 585 118 L 592 113 L 599 120 L 606 115" style="stroke:#fff; stroke-width:2; fill:none;" />
+
+    <!-- Checkmark for Component 4 -->
+    <path d="M 780 120 L 785 125 L 800 110" style="stroke:#fff; stroke-width:3; fill:none; stroke-linecap:round;" />
+
+    <!-- Calculator for Component 5 -->
+    <rect x="1000" y="110" width="20" height="20" style="fill:none; stroke:#fff; stroke-width:2;" rx="2" />
+    <text x="1010" y="124" text-anchor="middle" style="font-size:10px; fill:#fff;">123</text>
+  </g>
+
+  <!-- Annotations -->
+  <text x="600" y="680" text-anchor="middle" class="formula" style="font-size:12px;">Component 1 typically represents 60-80% of ROI in most implementations</text>
+</svg>

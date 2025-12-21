@@ -1,0 +1,171 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <defs>
+    <style>
+      .title { font-family: 'Segoe UI', Arial, sans-serif; font-size: 24px; font-weight: bold; fill: #0078D4; }
+      .heading { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; font-weight: bold; fill: #333; }
+      .label { font-family: 'Segoe UI', Arial, sans-serif; font-size: 14px; fill: #333; }
+      .label-white { font-family: 'Segoe UI', Arial, sans-serif; font-size: 14px; fill: #fff; }
+      .label-small { font-family: 'Segoe UI', Arial, sans-serif; font-size: 11px; fill: #5E5E5E; }
+      .metric { font-family: 'Segoe UI', Arial, sans-serif; font-size: 12px; fill: #333; }
+      .box-coe { fill: #0078D4; stroke: #0078D4; stroke-width: 3; }
+      .box-hub-hr { fill: #FFE6E6; stroke: #D13438; stroke-width: 2; }
+      .box-hub-finance { fill: #E6F2FF; stroke: #0078D4; stroke-width: 2; }
+      .box-hub-sales { fill: #E6FFE6; stroke: #10893E; stroke-width: 2; }
+      .line-connection { stroke: #0078D4; stroke-width: 2; fill: none; }
+      .dot-maker { fill: #5E5E5E; opacity: 0.3; }
+    </style>
+  </defs>
+
+  <!-- Title -->
+  <text x="600" y="30" text-anchor="middle" class="title">Federated CoE Model with Power Hubs</text>
+
+  <!-- Central CoE -->
+  <g transform="translate(400, 80)">
+    <rect x="0" y="0" width="400" height="180" class="box-coe" rx="10" />
+    <text x="200" y="30" text-anchor="middle" class="label-white" style="font-size:20px; font-weight:bold;">CENTRAL CoE</text>
+    <text x="200" y="50" text-anchor="middle" class="label-white" style="font-size:14px;">(12 specialists)</text>
+
+    <!-- Team structure -->
+    <g transform="translate(20, 70)">
+      <text x="0" y="0" class="label-white">• CoE Director</text>
+      <text x="0" y="20" class="label-white">• Platform Admins (3)</text>
+      <text x="190" y="0" class="label-white">• SMEs (6)</text>
+      <text x="190" y="20" class="label-white">• Training Lead (1)</text>
+      <text x="190" y="40" class="label-white">• Business Analyst (1)</text>
+    </g>
+  </g>
+
+  <!-- Power Hubs -->
+
+  <!-- Power Hub: HR Department -->
+  <g transform="translate(100, 350)">
+    <rect x="0" y="0" width="200" height="120" class="box-hub-hr" rx="8" />
+    <text x="100" y="25" text-anchor="middle" class="heading">POWER HUB</text>
+    <text x="100" y="45" text-anchor="middle" class="label">(HR Dept)</text>
+
+    <text x="10" y="70" class="metric">Champions: 2</text>
+    <text x="10" y="88" class="metric">Makers: 85</text>
+
+    <!-- Small dots representing makers -->
+    <g transform="translate(10, 100)">
+      <circle cx="5" cy="0" r="3" class="dot-maker" />
+      <circle cx="15" cy="0" r="3" class="dot-maker" />
+      <circle cx="25" cy="0" r="3" class="dot-maker" />
+      <circle cx="35" cy="0" r="3" class="dot-maker" />
+      <circle cx="45" cy="0" r="3" class="dot-maker" />
+      <text x="60" y="5" class="label-small">...85 makers</text>
+    </g>
+  </g>
+
+  <!-- Agents under HR Hub -->
+  <g transform="translate(130, 490)">
+    <rect x="0" y="0" width="140" height="35" style="fill:#fff; stroke:#D13438; stroke-width:1; rx:4;" />
+    <text x="70" y="22" text-anchor="middle" class="label-small">[Agents: 12]</text>
+  </g>
+
+  <!-- Power Hub: Finance -->
+  <g transform="translate(400, 350)">
+    <rect x="0" y="0" width="200" height="120" class="box-hub-finance" rx="8" />
+    <text x="100" y="25" text-anchor="middle" class="heading">POWER HUB</text>
+    <text x="100" y="45" text-anchor="middle" class="label">(Finance)</text>
+
+    <text x="10" y="70" class="metric">Champions: 2</text>
+    <text x="10" y="88" class="metric">Makers: 120</text>
+
+    <!-- Small dots representing makers -->
+    <g transform="translate(10, 100)">
+      <circle cx="5" cy="0" r="3" class="dot-maker" />
+      <circle cx="15" cy="0" r="3" class="dot-maker" />
+      <circle cx="25" cy="0" r="3" class="dot-maker" />
+      <circle cx="35" cy="0" r="3" class="dot-maker" />
+      <circle cx="45" cy="0" r="3" class="dot-maker" />
+      <text x="60" y="5" class="label-small">...120 makers</text>
+    </g>
+  </g>
+
+  <!-- Agents under Finance Hub -->
+  <g transform="translate(430, 490)">
+    <rect x="0" y="0" width="140" height="35" style="fill:#fff; stroke:#0078D4; stroke-width:1; rx:4;" />
+    <text x="70" y="22" text-anchor="middle" class="label-small">[Agents: 18]</text>
+  </g>
+
+  <!-- Power Hub: Sales -->
+  <g transform="translate(700, 350)">
+    <rect x="0" y="0" width="200" height="120" class="box-hub-sales" rx="8" />
+    <text x="100" y="25" text-anchor="middle" class="heading">POWER HUB</text>
+    <text x="100" y="45" text-anchor="middle" class="label">(Sales)</text>
+
+    <text x="10" y="70" class="metric">Champions: 2</text>
+    <text x="10" y="88" class="metric">Makers: 95</text>
+
+    <!-- Small dots representing makers -->
+    <g transform="translate(10, 100)">
+      <circle cx="5" cy="0" r="3" class="dot-maker" />
+      <circle cx="15" cy="0" r="3" class="dot-maker" />
+      <circle cx="25" cy="0" r="3" class="dot-maker" />
+      <circle cx="35" cy="0" r="3" class="dot-maker" />
+      <circle cx="45" cy="0" r="3" class="dot-maker" />
+      <text x="60" y="5" class="label-small">...95 makers</text>
+    </g>
+  </g>
+
+  <!-- Agents under Sales Hub -->
+  <g transform="translate(730, 490)">
+    <rect x="0" y="0" width="140" height="35" style="fill:#fff; stroke:#10893E; stroke-width:1; rx:4;" />
+    <text x="70" y="22" text-anchor="middle" class="label-small">[Agents: 15]</text>
+  </g>
+
+  <!-- More hubs indicator -->
+  <g transform="translate(1000, 400)">
+    <text x="0" y="0" class="label" style="font-size:24px;">...</text>
+    <text x="0" y="20" class="label-small">(65 total hubs)</text>
+  </g>
+
+  <!-- Connection lines from Central CoE to Power Hubs -->
+  <line x1="600" y1="260" x2="200" y2="350" class="line-connection" />
+  <line x1="600" y1="260" x2="500" y2="350" class="line-connection" />
+  <line x1="600" y1="260" x2="800" y2="350" class="line-connection" />
+
+  <!-- Connection lines from Power Hubs to their agents -->
+  <line x1="200" y1="470" x2="200" y2="490" class="line-connection" stroke-dasharray="3,3" />
+  <line x1="500" y1="470" x2="500" y2="490" class="line-connection" stroke-dasharray="3,3" />
+  <line x1="800" y1="470" x2="800" y2="490" class="line-connection" stroke-dasharray="3,3" />
+
+  <!-- Scaling Ratio Box -->
+  <g transform="translate(100, 560)">
+    <rect x="0" y="0" width="1000" height="100" style="fill:#F3F3F3; stroke:#0078D4; stroke-width:2; rx:8;" />
+
+    <text x="500" y="25" text-anchor="middle" class="heading" style="font-size:18px; fill:#0078D4;">SCALING RATIO</text>
+
+    <g transform="translate(20, 40)">
+      <text x="0" y="0" class="label">Central CoE: 12 specialists</text>
+      <text x="0" y="20" class="label">Power Hubs: 65 champions across organization</text>
+      <text x="500" y="0" class="label">Makers Enabled: 1,400+ citizen developers</text>
+    </g>
+
+    <text x="500" y="85" text-anchor="middle" class="label" style="font-size:16px; font-weight:bold; fill:#10893E;">RATIO: Each CoE specialist enables 116+ makers through Power Hub multiplication effect</text>
+  </g>
+
+  <!-- Power Hub Responsibilities Box -->
+  <g transform="translate(100, 680)">
+    <rect x="0" y="0" width="1000" height="90" style="fill:#E3F2FD; stroke:#0078D4; stroke-width:2; rx:8;" />
+
+    <text x="20" y="25" class="heading" style="font-size:14px;">POWER HUB RESPONSIBILITIES:</text>
+
+    <g transform="translate(20, 35)">
+      <text x="0" y="10" class="metric">• Identify local automation opportunities</text>
+      <text x="0" y="26" class="metric">• Advocate for agent adoption in department</text>
+      <text x="350" y="10" class="metric">• Provide first-level support to local makers</text>
+      <text x="350" y="26" class="metric">• Share success stories with central CoE</text>
+      <text x="700" y="10" class="metric">• Represent department needs in governance</text>
+    </g>
+  </g>
+
+  <!-- Case Study Badge -->
+  <g transform="translate(850, 90)">
+    <rect x="0" y="0" width="280" height="60" style="fill:#10893E; stroke:#fff; stroke-width:3; rx:8;" />
+    <text x="140" y="20" text-anchor="middle" class="label-white" style="font-weight:bold;">VALIDATED CASE STUDY:</text>
+    <text x="140" y="38" text-anchor="middle" class="label-white">Lloyds Banking Group</text>
+    <text x="140" y="53" text-anchor="middle" class="label-white" style="font-size:11px;">1,400+ developers enabled</text>
+  </g>
+</svg>

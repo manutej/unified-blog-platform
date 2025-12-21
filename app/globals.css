@@ -1,0 +1,191 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-inter: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-neutral-50 dark:bg-neutral-900 text-neutral-900 dark:text-neutral-50 transition-colors duration-200;
+  }
+
+  /* Focus indicators for accessibility (WCAG 2.1 AA) */
+  *:focus-visible {
+    @apply outline-none ring-4 ring-blue-500/20 ring-offset-2;
+  }
+
+  /* Custom scrollbar for better UX */
+  ::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-neutral-100 dark:bg-neutral-800;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-neutral-300 dark:bg-neutral-700 rounded-lg;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-neutral-400 dark:bg-neutral-600;
+  }
+}
+
+@layer utilities {
+  /* Line clamp utilities */
+  .line-clamp-1 {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Glass morphism effect */
+  .glass {
+    @apply backdrop-blur-lg bg-white/10 border border-white/20;
+  }
+
+  .glass-dark {
+    @apply backdrop-blur-lg bg-black/10 border border-black/20;
+  }
+
+  /* Text gradient utility */
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r;
+  }
+}
+
+/* Prose customization for blog content */
+@layer components {
+  .prose {
+    @apply max-w-none;
+  }
+
+  .prose h1,
+  .prose h2,
+  .prose h3,
+  .prose h4,
+  .prose h5,
+  .prose h6 {
+    @apply scroll-mt-24;
+  }
+
+  .prose a {
+    @apply no-underline;
+    @apply border-b-2 border-blue-600/30 dark:border-blue-400/30;
+    @apply hover:border-blue-600 dark:hover:border-blue-400;
+    @apply transition-colors;
+  }
+
+  .prose code {
+    @apply before:content-[''] after:content-[''];
+  }
+
+  .prose pre {
+    @apply overflow-x-auto;
+  }
+
+  .prose img {
+    @apply rounded-lg shadow-lg my-8;
+  }
+
+  .prose blockquote {
+    @apply border-l-4 border-blue-600 dark:border-blue-400;
+    @apply bg-blue-50 dark:bg-blue-900/20;
+    @apply py-4 px-6 my-6 rounded-r-lg;
+  }
+
+  .prose table {
+    @apply border-collapse w-full my-8;
+  }
+
+  .prose th {
+    @apply bg-neutral-100 dark:bg-neutral-800 font-bold;
+  }
+
+  .prose td,
+  .prose th {
+    @apply border border-neutral-300 dark:border-neutral-700 px-4 py-2;
+  }
+
+  .prose ul,
+  .prose ol {
+    @apply my-6;
+  }
+
+  .prose li {
+    @apply my-2;
+  }
+}
+
+/* Dark mode prose adjustments */
+.dark .prose {
+  @apply prose-invert;
+}
+
+/* Skip link styles */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.focus\:not-sr-only:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: inherit;
+  margin: inherit;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+/* Print styles */
+@media print {
+  body {
+    @apply bg-white text-black;
+  }
+
+  header,
+  footer,
+  nav {
+    @apply hidden;
+  }
+
+  .prose a {
+    @apply text-black underline;
+  }
+
+  .prose a::after {
+    content: " (" attr(href) ")";
+    @apply text-sm text-neutral-600;
+  }
+}

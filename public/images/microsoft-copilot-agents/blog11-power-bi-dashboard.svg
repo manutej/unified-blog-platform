@@ -1,0 +1,221 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900">
+  <defs>
+    <style>
+      .title { font-family: 'Segoe UI', Arial, sans-serif; font-size: 24px; font-weight: bold; fill: #fff; }
+      .subtitle { font-family: 'Segoe UI', Arial, sans-serif; font-size: 14px; fill: #fff; }
+      .section-header { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; font-weight: bold; fill: #0078D4; }
+      .label { font-family: 'Segoe UI', Arial, sans-serif; font-size: 14px; fill: #333; }
+      .label-small { font-family: 'Segoe UI', Arial, sans-serif; font-size: 11px; fill: #5E5E5E; }
+      .value-large { font-family: 'Segoe UI', Arial, sans-serif; font-size: 32px; font-weight: bold; fill: #0078D4; }
+      .value-medium { font-family: 'Segoe UI', Arial, sans-serif; font-size: 18px; font-weight: bold; fill: #333; }
+      .table-header { font-family: 'Segoe UI', Arial, sans-serif; font-size: 12px; font-weight: bold; fill: #fff; }
+      .table-cell { font-family: 'Segoe UI', Arial, sans-serif; font-size: 12px; fill: #333; }
+      .header-bg { fill: #0078D4; }
+      .card-bg { fill: #fff; stroke: #E1DFDD; stroke-width: 2; }
+      .chart-line { stroke: #0078D4; stroke-width: 3; fill: none; }
+      .gauge-bg { fill: #E1DFDD; }
+      .gauge-fill { fill: #10893E; }
+    </style>
+  </defs>
+
+  <!-- Header -->
+  <rect x="0" y="0" width="1200" height="70" class="header-bg" />
+  <text x="600" y="35" text-anchor="middle" class="title">COPILOT AGENTS ROI DASHBOARD</text>
+  <text x="600" y="55" text-anchor="middle" class="subtitle">Last Updated: Dec 18, 2024</text>
+
+  <!-- SECTION 1: Summary Cards (Top Row) -->
+  <text x="100" y="110" class="section-header">Summary Metrics (Last 30 days)</text>
+
+  <!-- Card 1: Total Conversations -->
+  <g transform="translate(100, 120)">
+    <rect x="0" y="0" width="240" height="120" class="card-bg" />
+    <text x="120" y="30" text-anchor="middle" class="label">Total Conversations</text>
+    <text x="120" y="70" text-anchor="middle" class="value-large">12,450</text>
+    <text x="120" y="95" text-anchor="middle" class="label-small">(Last 30 days)</text>
+  </g>
+
+  <!-- Card 2: Total Hours Saved -->
+  <g transform="translate(360, 120)">
+    <rect x="0" y="0" width="240" height="120" class="card-bg" />
+    <text x="120" y="30" text-anchor="middle" class="label">Total Hours Saved</text>
+    <text x="120" y="70" text-anchor="middle" class="value-large">998.1</text>
+    <text x="120" y="95" text-anchor="middle" class="label-small">(Last 30 days)</text>
+  </g>
+
+  <!-- Card 3: Total Dollar Value -->
+  <g transform="translate(620, 120)">
+    <rect x="0" y="0" width="240" height="120" class="card-bg" />
+    <text x="120" y="30" text-anchor="middle" class="label">Total Dollar Value</text>
+    <text x="120" y="70" text-anchor="middle" class="value-large">$170,593</text>
+    <text x="120" y="95" text-anchor="middle" class="label-small">(Last 30 days)</text>
+  </g>
+
+  <!-- Card 4: ROI % -->
+  <g transform="translate(880, 120)">
+    <rect x="0" y="0" width="240" height="120" class="card-bg" />
+    <text x="120" y="30" text-anchor="middle" class="label">ROI % (Cumulative)</text>
+    <text x="120" y="70" text-anchor="middle" class="value-large" style="fill:#10893E;">1,212%</text>
+    <text x="120" y="95" text-anchor="middle" class="label-small">Since deployment</text>
+  </g>
+
+  <!-- SECTION 2: Trends Over Time (Middle Row) -->
+  <text x="100" y="280" class="section-header">Trends Over Time</text>
+
+  <!-- Chart 1: Conversations per Week -->
+  <g transform="translate(100, 290)">
+    <rect x="0" y="0" width="520" height="200" class="card-bg" />
+    <text x="260" y="25" text-anchor="middle" class="label">Conversations per Week</text>
+
+    <!-- Simple line chart -->
+    <polyline points="40,150 100,140 160,130 220,110 280,90 340,70 400,50 460,35"
+              class="chart-line" />
+
+    <!-- Data points -->
+    <circle cx="40" cy="150" r="4" style="fill:#0078D4;" />
+    <circle cx="160" cy="130" r="4" style="fill:#0078D4;" />
+    <circle cx="280" cy="90" r="4" style="fill:#0078D4;" />
+    <circle cx="400" cy="50" r="4" style="fill:#0078D4;" />
+    <circle cx="460" cy="35" r="4" style="fill:#0078D4;" />
+
+    <!-- X-axis labels -->
+    <text x="40" y="180" text-anchor="middle" class="label-small">Week 1</text>
+    <text x="280" y="180" text-anchor="middle" class="label-small">Week 4</text>
+    <text x="460" y="180" text-anchor="middle" class="label-small">Week 12</text>
+
+    <!-- Annotation -->
+    <text x="260" y="175" text-anchor="middle" class="label-small" style="font-style:italic;">Showing adoption curve</text>
+  </g>
+
+  <!-- Chart 2: Cumulative Dollar Value -->
+  <g transform="translate(640, 290)">
+    <rect x="0" y="0" width="480" height="200" class="card-bg" />
+    <text x="240" y="25" text-anchor="middle" class="label">Cumulative Dollar Value</text>
+
+    <!-- Simple line chart -->
+    <polyline points="40,150 100,140 160,125 220,105 280,80 340,50 400,30 420,20"
+              style="stroke:#10893E; stroke-width:3; fill:none;" />
+
+    <!-- Data points -->
+    <circle cx="40" cy="150" r="4" style="fill:#10893E;" />
+    <circle cx="160" cy="125" r="4" style="fill:#10893E;" />
+    <circle cx="280" cy="80" r="4" style="fill:#10893E;" />
+    <circle cx="400" cy="30" r="4" style="fill:#10893E;" />
+    <circle cx="420" cy="20" r="4" style="fill:#10893E;" />
+
+    <!-- X-axis labels -->
+    <text x="40" y="180" text-anchor="middle" class="label-small">Week 1</text>
+    <text x="240" y="180" text-anchor="middle" class="label-small">Week 4</text>
+    <text x="420" y="180" text-anchor="middle" class="label-small">Week 12</text>
+
+    <!-- Annotation -->
+    <text x="240" y="175" text-anchor="middle" class="label-small" style="font-style:italic;">Total value delivered to date</text>
+  </g>
+
+  <!-- SECTION 3: Agent Breakdown (Bottom Left) -->
+  <text x="100" y="530" class="section-header">Agent Performance Breakdown</text>
+
+  <g transform="translate(100, 540)">
+    <rect x="0" y="0" width="620" height="280" class="card-bg" />
+
+    <!-- Table header -->
+    <rect x="10" y="10" width="600" height="30" style="fill:#0078D4;" />
+    <text x="80" y="30" class="table-header">Agent Name</text>
+    <text x="240" y="30" class="table-header">Convos</text>
+    <text x="330" y="30" class="table-header">Hours Saved</text>
+    <text x="450" y="30" class="table-header">$ Value</text>
+    <text x="550" y="30" class="table-header">ROI %</text>
+
+    <!-- Row 1: HR Benefits -->
+    <rect x="10" y="40" width="600" height="30" style="fill:#F3F3F3;" />
+    <text x="20" y="60" class="table-cell">HR Benefits</text>
+    <text x="240" y="60" class="table-cell">1,450</text>
+    <text x="330" y="60" class="table-cell">51.4</text>
+    <text x="450" y="60" class="table-cell">$21,588</text>
+    <text x="550" y="60" class="table-cell" style="fill:#10893E; font-weight:bold;">1,284%</text>
+
+    <!-- Row 2: IT Help Desk -->
+    <rect x="10" y="70" width="600" height="30" style="fill:#fff;" />
+    <text x="20" y="90" class="table-cell">IT Help Desk</text>
+    <text x="240" y="90" class="table-cell">3,200</text>
+    <text x="330" y="90" class="table-cell">266.7</text>
+    <text x="450" y="90" class="table-cell">$40,005</text>
+    <text x="550" y="90" class="table-cell" style="fill:#10893E; font-weight:bold;">2,464%</text>
+
+    <!-- Row 3: Customer Lookup -->
+    <rect x="10" y="100" width="600" height="30" style="fill:#F3F3F3;" />
+    <text x="20" y="120" class="table-cell">Customer Lookup</text>
+    <text x="240" y="120" class="table-cell">4,800</text>
+    <text x="330" y="120" class="table-cell">320.0</text>
+    <text x="450" y="120" class="table-cell">$64,000</text>
+    <text x="550" y="120" class="table-cell" style="fill:#10893E; font-weight:bold;">4,000%</text>
+
+    <!-- Row 4: Policy FAQ -->
+    <rect x="10" y="130" width="600" height="30" style="fill:#fff;" />
+    <text x="20" y="150" class="table-cell">Policy FAQ</text>
+    <text x="240" y="150" class="table-cell">2,100</text>
+    <text x="330" y="150" class="table-cell">210.0</text>
+    <text x="450" y="150" class="table-cell">$26,250</text>
+    <text x="550" y="150" class="table-cell" style="fill:#10893E; font-weight:bold;">1,583%</text>
+
+    <!-- Row 5: Expense Approvals -->
+    <rect x="10" y="160" width="600" height="30" style="fill:#F3F3F3;" />
+    <text x="20" y="180" class="table-cell">Expense Approvals</text>
+    <text x="240" y="180" class="table-cell">900</text>
+    <text x="330" y="180" class="table-cell">150.0</text>
+    <text x="450" y="180" class="table-cell">$18,750</text>
+    <text x="550" y="180" class="table-cell" style="fill:#10893E; font-weight:bold;">1,032%</text>
+
+    <!-- Total row -->
+    <rect x="10" y="190" width="600" height="30" style="fill:#0078D4;" />
+    <text x="20" y="210" class="table-header">TOTAL</text>
+    <text x="240" y="210" class="table-header">12,450</text>
+    <text x="330" y="210" class="table-header">998.1</text>
+    <text x="450" y="210" class="table-header">$170,593</text>
+    <text x="550" y="210" class="table-header">1,212%</text>
+  </g>
+
+  <!-- SECTION 4: Adoption Metrics (Bottom Right) -->
+  <text x="740" y="530" class="section-header">Adoption Metrics</text>
+
+  <!-- Daily Active Users Gauge -->
+  <g transform="translate(740, 550)">
+    <rect x="0" y="0" width="360" height="80" class="card-bg" />
+    <text x="10" y="20" class="label">Daily Active Users</text>
+
+    <!-- Gauge background -->
+    <rect x="20" y="35" width="200" height="20" class="gauge-bg" rx="10" />
+    <!-- Gauge fill (77%) -->
+    <rect x="20" y="35" width="154" height="20" class="gauge-fill" rx="10" />
+    <text x="230" y="50" class="value-medium">77%</text>
+    <text x="280" y="50" class="label-small">Target: 70% ✓</text>
+  </g>
+
+  <!-- CSAT Score Gauge -->
+  <g transform="translate(740, 640)">
+    <rect x="0" y="0" width="360" height="80" class="card-bg" />
+    <text x="10" y="20" class="label">CSAT Score</text>
+
+    <!-- Gauge background -->
+    <rect x="20" y="35" width="200" height="20" class="gauge-bg" rx="10" />
+    <!-- Gauge fill (92%) -->
+    <rect x="20" y="35" width="184" height="20" class="gauge-fill" rx="10" />
+    <text x="230" y="50" class="value-medium">4.6/5.0</text>
+    <text x="290" y="50" class="label-small">Target: 4.0 ✓</text>
+  </g>
+
+  <!-- Resolution Rate Gauge -->
+  <g transform="translate(740, 730)">
+    <rect x="0" y="0" width="360" height="80" class="card-bg" />
+    <text x="10" y="20" class="label">Resolution Rate</text>
+
+    <!-- Gauge background -->
+    <rect x="20" y="35" width="200" height="20" class="gauge-bg" rx="10" />
+    <!-- Gauge fill (84%) -->
+    <rect x="20" y="35" width="168" height="20" class="gauge-fill" rx="10" />
+    <text x="230" y="50" class="value-medium">84%</text>
+    <text x="280" y="50" class="label-small">Target: 80% ✓</text>
+  </g>
+
+  <!-- Footer annotation -->
+  <text x="600" y="880" text-anchor="middle" class="label-small" style="font-style:italic;">Dashboard provides real-time visibility into agent performance, business value, and adoption metrics</text>
+</svg>

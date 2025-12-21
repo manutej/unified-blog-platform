@@ -1,0 +1,145 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600">
+  <defs>
+    <style>
+      .title { font-family: 'Segoe UI', Arial, sans-serif; font-size: 24px; font-weight: bold; fill: #0078D4; }
+      .section-title { font-family: 'Segoe UI', Arial, sans-serif; font-size: 18px; font-weight: bold; fill: #333; }
+      .label { font-family: 'Segoe UI', Arial, sans-serif; font-size: 14px; fill: #333; }
+      .time { font-family: 'Segoe UI', Arial, sans-serif; font-size: 12px; fill: #5E5E5E; }
+      .waste-text { font-family: 'Segoe UI', Arial, sans-serif; font-size: 14px; fill: #D13438; font-weight: bold; }
+      .efficient-text { font-family: 'Segoe UI', Arial, sans-serif; font-size: 14px; fill: #10893E; font-weight: bold; }
+      .box-polling { fill: #FFEBEE; stroke: #D13438; stroke-width: 2; }
+      .box-event { fill: #E1F0D7; stroke: #10893E; stroke-width: 2; }
+      .timeline { stroke: #5E5E5E; stroke-width: 2; }
+      .arrow-event { stroke: #0078D4; stroke-width: 3; fill: none; marker-end: url(#arrowhead-blue); }
+    </style>
+    <marker id="arrowhead-blue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#0078D4" />
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="600" y="30" text-anchor="middle" class="title">Polling vs. Event-Driven Automation</text>
+
+  <!-- TOP SECTION: Traditional Polling (Inefficient) -->
+  <g id="polling-section">
+    <text x="600" y="70" text-anchor="middle" class="section-title" style="fill:#D13438;">Traditional Polling (Inefficient)</text>
+
+    <!-- Background box -->
+    <rect x="100" y="90" width="1000" height="180" class="box-polling" />
+
+    <!-- Timeline -->
+    <line x1="150" y1="150" x2="1000" y2="150" class="timeline" />
+
+    <!-- Time markers -->
+    <g id="time-markers">
+      <!-- 00:00 -->
+      <line x1="200" y1="145" x2="200" y2="155" class="timeline" />
+      <text x="200" y="175" text-anchor="middle" class="time">00:00</text>
+      <circle cx="200" cy="115" r="8" style="fill:none; stroke:#D13438; stroke-width:2;" />
+      <path d="M 200 108 L 200 115 L 205 115" style="stroke:#D13438; stroke-width:1.5; fill:none;" />
+      <text x="200" y="195" text-anchor="middle" class="label">Check</text>
+      <text x="235" y="115" class="waste-text" style="font-size:20px;">✗</text>
+      <text x="200" y="210" text-anchor="middle" class="time">(empty)</text>
+
+      <!-- 00:05 -->
+      <line x1="370" y1="145" x2="370" y2="155" class="timeline" />
+      <text x="370" y="175" text-anchor="middle" class="time">00:05</text>
+      <circle cx="370" cy="115" r="8" style="fill:none; stroke:#D13438; stroke-width:2;" />
+      <path d="M 370 108 L 370 115 L 375 115" style="stroke:#D13438; stroke-width:1.5; fill:none;" />
+      <text x="370" y="195" text-anchor="middle" class="label">Check</text>
+      <text x="405" y="115" class="waste-text" style="font-size:20px;">✗</text>
+      <text x="370" y="210" text-anchor="middle" class="time">(empty)</text>
+
+      <!-- 00:10 -->
+      <line x1="540" y1="145" x2="540" y2="155" class="timeline" />
+      <text x="540" y="175" text-anchor="middle" class="time">00:10</text>
+      <circle cx="540" cy="115" r="8" style="fill:none; stroke:#D13438; stroke-width:2;" />
+      <path d="M 540 108 L 540 115 L 545 115" style="stroke:#D13438; stroke-width:1.5; fill:none;" />
+      <text x="540" y="195" text-anchor="middle" class="label">Check</text>
+      <text x="575" y="115" class="waste-text" style="font-size:20px;">✗</text>
+      <text x="540" y="210" text-anchor="middle" class="time">(empty)</text>
+
+      <!-- 00:15 -->
+      <line x1="710" y1="145" x2="710" y2="155" class="timeline" />
+      <text x="710" y="175" text-anchor="middle" class="time">00:15</text>
+      <circle cx="710" cy="115" r="8" style="fill:none; stroke:#D13438; stroke-width:2;" />
+      <path d="M 710 108 L 710 115 L 715 115" style="stroke:#D13438; stroke-width:1.5; fill:none;" />
+      <text x="710" y="195" text-anchor="middle" class="label">Check</text>
+      <text x="745" y="115" class="efficient-text" style="font-size:20px;">✓</text>
+      <text x="710" y="210" text-anchor="middle" class="time">(found!)</text>
+
+      <!-- 00:20 -->
+      <line x1="880" y1="145" x2="880" y2="155" class="timeline" />
+      <text x="880" y="175" text-anchor="middle" class="time">00:20</text>
+      <text x="880" y="195" text-anchor="middle" class="label">Process</text>
+    </g>
+
+    <!-- Waste annotations -->
+    <g transform="translate(150, 230)">
+      <text x="0" y="0" class="waste-text">Wasted: 3 checks × 15 min = 45 min waste</text>
+      <text x="0" y="20" class="waste-text">Delay: Up to 5 min between check and event</text>
+    </g>
+  </g>
+
+  <!-- BOTTOM SECTION: Event-Driven (Efficient) -->
+  <g id="event-section">
+    <text x="600" y="320" text-anchor="middle" class="section-title" style="fill:#10893E;">Event-Driven (Efficient)</text>
+
+    <!-- Background box -->
+    <rect x="100" y="340" width="1000" height="200" class="box-event" />
+
+    <!-- Flow diagram -->
+    <g transform="translate(150, 380)">
+      <!-- SharePoint Upload -->
+      <rect x="0" y="0" width="120" height="60" style="fill:#0078D4; stroke:#0078D4; stroke-width:2; rx:5;" />
+      <text x="60" y="25" text-anchor="middle" class="label" style="fill:#fff; font-weight:bold;">SharePoint</text>
+      <text x="60" y="42" text-anchor="middle" class="label" style="fill:#fff; font-weight:bold;">Upload</text>
+
+      <!-- Arrow -->
+      <path d="M 120 30 L 200 30" class="arrow-event" />
+
+      <!-- Event Fires (Lightning bolt) -->
+      <rect x="200" y="0" width="120" height="60" style="fill:#CA5010; stroke:#CA5010; stroke-width:2; rx:5;" />
+      <text x="260" y="22" text-anchor="middle" class="label" style="fill:#fff; font-size:24px; font-weight:bold;">⚡</text>
+      <text x="260" y="42" text-anchor="middle" class="label" style="fill:#fff; font-weight:bold;">Event Fires</text>
+      <text x="260" y="56" text-anchor="middle" style="font-size:11px; fill:#fff; font-style:italic;">(Instant)</text>
+
+      <!-- Arrow -->
+      <path d="M 320 30 L 400 30" class="arrow-event" />
+
+      <!-- Flow Triggers -->
+      <rect x="400" y="0" width="120" height="60" style="fill:#0078D4; stroke:#0078D4; stroke-width:2; rx:5;" />
+      <text x="460" y="25" text-anchor="middle" class="label" style="fill:#fff; font-weight:bold;">Flow Triggers</text>
+      <text x="460" y="42" text-anchor="middle" style="font-size:11px; fill:#fff; font-style:italic;">(Immediate)</text>
+
+      <!-- Arrow -->
+      <path d="M 520 30 L 600 30" class="arrow-event" />
+
+      <!-- Process -->
+      <rect x="600" y="0" width="120" height="60" style="fill:#10893E; stroke:#10893E; stroke-width:2; rx:5;" />
+      <text x="660" y="35" text-anchor="middle" class="label" style="fill:#fff; font-weight:bold; font-size:18px;">Process</text>
+    </g>
+
+    <!-- Efficiency metrics -->
+    <g transform="translate(150, 460)">
+      <text x="0" y="0" class="efficient-text">Wait time: ~0 seconds</text>
+      <text x="0" y="20" class="efficient-text">Resource waste: 0 checks</text>
+    </g>
+
+    <!-- Instant response badge -->
+    <g transform="translate(850, 380)">
+      <circle cx="50" cy="30" r="45" style="fill:#10893E; stroke:#10893E; stroke-width:3;" />
+      <text x="50" y="28" text-anchor="middle" style="font-size:14px; fill:#fff; font-weight:bold;">Instant</text>
+      <text x="50" y="44" text-anchor="middle" style="font-size:14px; fill:#fff; font-weight:bold;">Response</text>
+    </g>
+
+    <!-- 99.9% faster callout -->
+    <g transform="translate(850, 470)">
+      <rect x="0" y="0" width="140" height="40" style="fill:#10893E; stroke:#fff; stroke-width:3; rx:5;" />
+      <text x="70" y="26" text-anchor="middle" style="font-size:20px; fill:#fff; font-weight:bold;">99.9% Faster</text>
+    </g>
+  </g>
+
+  <!-- Comparison annotation -->
+  <text x="600" y="570" text-anchor="middle" class="label" style="font-size:12px; font-style:italic;">Event-driven automation eliminates polling waste and provides instant response to business events</text>
+</svg>
