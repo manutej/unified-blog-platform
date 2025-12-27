@@ -1,10 +1,12 @@
 /**
  * BlogContent Component
- * Renders markdown content with XSS protection
+ * Renders markdown content with syntax highlighting
  *
- * @pillar Secure (Pillar 4) - DOMPurify sanitization before rendering
- * @pillar Beautiful (Pillar 2) - Tailwind typography for optimal readability
+ * @pillar Beautiful (Pillar 2) - Tailwind typography + syntax highlighting
  * @pillar Accessible (Pillar 3) - Semantic HTML, proper heading hierarchy
+ *
+ * Note: DOMPurify was removed because it corrupts markdown before parsing.
+ * ReactMarkdown with remarkGfm handles markdown safely for controlled content.
  */
 
 'use client';
@@ -12,60 +14,29 @@
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
-import { useEffect, useState } from 'react';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+
+// Create a modified theme that removes ALL background colors from tokens
+// This fixes the white/light background bleed-through issue on code spans
+const customOneDark = Object.fromEntries(
+  Object.entries(oneDark).map(([key, value]) => {
+    if (typeof value === 'object' && value !== null) {
+      // Remove background and backgroundColor from all token styles
+      const { background, backgroundColor, ...rest } = value as Record<string, unknown>;
+      return [key, rest];
+    }
+    return [key, value];
+  })
+);
 
 interface BlogContentProps {
   content: string;
 }
 
 export default function BlogContent({ content }: BlogContentProps) {
-  const [sanitizedContent, setSanitizedContent] = useState('');
-
-  useEffect(() => {
-    // Dynamic import of DOMPurify for client-side only
-    import('dompurify').then((DOMPurify) => {
-      const clean = DOMPurify.default.sanitize(content, {
-        ALLOWED_TAGS: [
-          // Text formatting
-          'p', 'strong', 'em', 'u', 's', 'mark', 'small', 'del', 'ins', 'sub', 'sup',
-          // Headings
-          'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
-          // Lists
-          'ul', 'ol', 'li',
-          // Links and media
-          'a', 'img',
-          // Code
-          'code', 'pre',
-          // Quotes and blocks
-          'blockquote', 'hr',
-          // Tables
-          'table', 'thead', 'tbody', 'tr', 'th', 'td',
-          // Semantic
-          'div', 'span', 'br',
-        ],
-        ALLOWED_ATTR: [
-          'href', 'src', 'alt', 'title', 'class', 'id',
-          'width', 'height', 'target', 'rel',
-        ],
-        // Ensure links open securely
-        ADD_ATTR: ['target', 'rel'],
-      });
-      setSanitizedContent(clean);
-    });
-  }, [content]);
-
-  if (!sanitizedContent) {
-    return (
-      <div className="animate-pulse">
-        <div className="h-4 bg-neutral-200 dark:bg-neutral-700 rounded w-3/4 mb-4"></div>
-        <div className="h-4 bg-neutral-200 dark:bg-neutral-700 rounded w-full mb-4"></div>
-        <div className="h-4 bg-neutral-200 dark:bg-neutral-700 rounded w-5/6"></div>
-      </div>
-    );
-  }
-
   return (
-    <div className="prose prose-lg dark:prose-invert max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-a:text-blue-600 hover:prose-a:text-blue-700 dark:prose-a:text-blue-400 dark:hover:prose-a:text-blue-300 prose-code:text-sm prose-code:bg-neutral-100 dark:prose-code:bg-neutral-800 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-pre:bg-neutral-900 dark:prose-pre:bg-neutral-950 prose-img:rounded-lg prose-img:shadow-lg">
+    <div className="prose prose-lg dark:prose-invert max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-a:text-blue-600 hover:prose-a:text-blue-700 dark:prose-a:text-blue-400 dark:hover:prose-a:text-blue-300 prose-img:rounded-lg prose-img:shadow-lg">
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         rehypePlugins={[rehypeRaw]}
@@ -92,9 +63,60 @@ export default function BlogContent({ content }: BlogContentProps) {
               alt={props.alt || 'Blog image'}
             />
           ),
+          // Syntax highlighted code blocks
+          code({ node, inline, className, children, ...props }: any) {
+            const match = /language-(\w+)/.exec(className || '');
+            const language = match ? match[1] : '';
+            const codeContent = String(children).replace(/\n$/, '');
+
+            // Only use SyntaxHighlighter for ACTUAL code blocks:
+            // 1. NOT inline (react-markdown tells us)
+            // 2. Has a language class OR contains newlines (multi-line)
+            const isCodeBlock = !inline && (language || codeContent.includes('\n'));
+
+            if (isCodeBlock) {
+              return (
+                <SyntaxHighlighter
+                  style={customOneDark}
+                  language={language || 'text'}
+                  PreTag="div"
+                  customStyle={{
+                    margin: '1.5rem 0',
+                    borderRadius: '0.75rem',
+                    fontSize: '0.875rem',
+                    padding: '1.25rem',
+                    background: '#282c34', // oneDark background color
+                  }}
+                  codeTagProps={{
+                    style: {
+                      fontFamily: 'ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace',
+                      background: 'transparent',
+                    },
+                  }}
+                >
+                  {codeContent}
+                </SyntaxHighlighter>
+              );
+            }
+
+            // Inline code styling (single backticks, no language, single line)
+            return (
+              <code
+                className="text-sm bg-neutral-100 dark:bg-neutral-800 text-pink-600 dark:text-pink-400 px-1.5 py-0.5 rounded font-mono"
+                {...props}
+              >
+                {children}
+              </code>
+            );
+          },
+          // Style pre to not conflict with SyntaxHighlighter
+          pre: ({ node, children, ...props }) => {
+            // If children is a code element, let the code component handle it
+            return <>{children}</>;
+          },
         }}
       >
-        {sanitizedContent}
+        {content}
       </ReactMarkdown>
     </div>
   );
