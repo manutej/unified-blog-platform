@@ -67,7 +67,11 @@ export default function BlogContent({ content }: BlogContentProps) {
           code({ node, inline, className, children, ...props }: any) {
             const match = /language-(\w+)/.exec(className || '');
             const language = match ? match[1] : '';
-            const codeContent = String(children).replace(/\n$/, '');
+            // Strip trailing newline AND any stray backticks at start/end
+            const codeContent = String(children)
+              .replace(/\n$/, '')
+              .replace(/^`+/, '')
+              .replace(/`+$/, '');
 
             // Only use SyntaxHighlighter for ACTUAL code blocks:
             // 1. NOT inline (react-markdown tells us)

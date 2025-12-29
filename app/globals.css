@@ -115,6 +115,13 @@
     @apply py-4 px-6 my-6 rounded-r-lg;
   }
 
+  /* Ensure code blocks inside blockquotes don't inherit blockquote border */
+  .prose blockquote div[style],
+  .prose div[style] {
+    border-left: none !important;
+    background: inherit;
+  }
+
   .prose table {
     @apply border-collapse w-full my-8;
   }
