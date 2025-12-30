@@ -67,11 +67,19 @@ export default function BlogContent({ content }: BlogContentProps) {
           code({ node, inline, className, children, ...props }: any) {
             const match = /language-(\w+)/.exec(className || '');
             const language = match ? match[1] : '';
-            // Strip trailing newline AND any stray backticks at start/end
-            const codeContent = String(children)
-              .replace(/\n$/, '')
-              .replace(/^`+/, '')
-              .replace(/`+$/, '');
+            // Strip trailing newline and stray backticks from first/last lines
+            // These appear when markdown has extra backticks around code fences
+            const rawContent = String(children).replace(/\n$/, '');
+            const lines = rawContent.split('\n');
+            // Remove leading backtick from first line
+            if (lines.length > 0) {
+              lines[0] = lines[0].replace(/^`+\s*/, '');
+            }
+            // Remove trailing backtick from last line
+            if (lines.length > 0) {
+              lines[lines.length - 1] = lines[lines.length - 1].replace(/\s*`+$/, '');
+            }
+            const codeContent = lines.join('\n');
 
             // Only use SyntaxHighlighter for ACTUAL code blocks:
             // 1. NOT inline (react-markdown tells us)

@@ -115,11 +115,11 @@
     @apply py-4 px-6 my-6 rounded-r-lg;
   }
 
-  /* Ensure code blocks inside blockquotes don't inherit blockquote border */
-  .prose blockquote div[style],
-  .prose div[style] {
+  /* Ensure code blocks never have blockquote-style borders */
+  .prose div[style*="background"],
+  .prose div[style*="#282c34"] {
+    border: none !important;
     border-left: none !important;
-    background: inherit;
   }
 
   .prose table {
