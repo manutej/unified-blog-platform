@@ -145,10 +145,7 @@
   }
 }
 
-/* Dark mode prose adjustments */
-.dark .prose {
-  @apply prose-invert;
-}
+/* Dark mode handled by dark:prose-invert in component */
 
 /* Skip link styles */
 .sr-only {
