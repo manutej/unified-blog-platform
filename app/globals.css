@@ -1,6 +1,13 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
+/*
+ * Dark mode variant configuration for Tailwind v4
+ * Enables .dark class selector on <html> element
+ * Works with next-themes ThemeProvider attribute="class"
+ */
+@variant dark (&:where(.dark, .dark *));
+
 @layer base {
   :root {
     --font-inter: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
