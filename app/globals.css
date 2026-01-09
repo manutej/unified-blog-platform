@@ -114,6 +114,18 @@
     @apply overflow-x-auto;
   }
 
+  /* Theme-aware code block styling */
+  .prose pre > div {
+    @apply transition-colors duration-200;
+  }
+
+  /* Ensure inline code inherits proper styling in light mode */
+  .prose :not(pre) > code {
+    @apply bg-neutral-100 dark:bg-neutral-800;
+    @apply text-rose-700 dark:text-rose-400;
+    @apply border border-neutral-200 dark:border-neutral-700;
+  }
+
   .prose img {
     @apply rounded-lg shadow-lg my-8;
   }
