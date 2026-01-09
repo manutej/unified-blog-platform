@@ -1,0 +1,25 @@
+{
+  "url": "https://blogs-unified.vercel.app/context-engineering/01-foundational-theory/",
+  "timestamp": "2026-01-02T18:29:21.718Z",
+  "themeToggle": {
+    "found": true,
+    "note": "Theme toggle works"
+  },
+  "codeBlocks": {
+    "found": true,
+    "count": 33,
+    "note": "Screenshots taken in both light and dark modes"
+  },
+  "images": {
+    "total": 0,
+    "broken": []
+  },
+  "consoleErrors": [],
+  "screenshots": [
+    "01-light-mode-full-page.png",
+    "02-light-mode-above-fold.png",
+    "03-dark-mode-full-page.png",
+    "04-dark-mode-above-fold.png",
+    "05-dark-mode-code-snippet-1.png"
+  ]
+}
