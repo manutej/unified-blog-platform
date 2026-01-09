@@ -114,6 +114,14 @@
     @apply overflow-x-auto;
   }
 
+  /* Remove horizontal line artifacts from code blocks */
+  .prose pre code,
+  .prose pre code span,
+  .prose pre code * {
+    border: none !important;
+    border-bottom: none !important;
+  }
+
   /* Theme-aware code block styling */
   .prose pre > div {
     @apply transition-colors duration-200;
