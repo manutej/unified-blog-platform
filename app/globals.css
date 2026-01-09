@@ -104,8 +104,10 @@
     @apply transition-colors;
   }
 
-  .prose code {
-    @apply before:content-[''] after:content-[''];
+  /* Remove backticks from inline code - Tailwind Typography adds them by default */
+  .prose code::before,
+  .prose code::after {
+    content: none !important;
   }
 
   .prose pre {
