@@ -49,7 +49,6 @@ The **Unified Blog System** consolidates 4 blog series (Context Engineering, MCP
 ### 1. Install Dependencies
 
 ```bash
-cd /Users/manu/Documents/LUXOR/blogs-unified
 npm install
 ```
 
@@ -144,8 +143,12 @@ blogs-unified/
 │
 ├── docs/                           # Documentation
 │   ├── ARCHITECTURE.md             # ✅ Complete system architecture
-│   ├── IMPLEMENTATION-PLAN.md      # ✅ Phased implementation guide
-│   └── IMPLEMENTATION-STATUS.md    # ✅ Progress tracker
+│   ├── guides/
+│   │   └── QUICK-START.md          # ✅ Getting started guide
+│   └── internal/                   # Development artifacts
+│       ├── IMPLEMENTATION-PLAN.md
+│       ├── IMPLEMENTATION-STATUS.md
+│       └── ...
 │
 ├── package.json                    # ✅ Dependencies
 ├── next.config.js                  # ✅ Next.js config (CSP headers)
@@ -477,8 +480,9 @@ MIT License - Open source and free to use
 ## 📞 Support
 
 - **Documentation**: See `docs/ARCHITECTURE.md` for complete system design
+- **Quick Start**: See `docs/guides/QUICK-START.md` for getting started
 - **Issues**: Create an issue in the repository
-- **Updates**: Check `docs/IMPLEMENTATION-STATUS.md` for current progress
+- **Internal Docs**: Development artifacts in `docs/internal/`
 
 ---
 
