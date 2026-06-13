@@ -96,8 +96,8 @@ test.describe('Blog Page Code Snippet Comparison', () => {
     // Check for any failed resource loads
     const failedResources = await page.evaluate(() => {
       const failed: string[] = [];
-      performance.getEntriesByType('resource').forEach((entry: PerformanceResourceTiming) => {
-        if (entry.transferSize === 0 && entry.decodedBodySize === 0) {
+      performance.getEntriesByType('resource').forEach((entry) => {
+        if (entry instanceof PerformanceResourceTiming && entry.transferSize === 0 && entry.decodedBodySize === 0) {
           // Potentially failed or cached
         }
       });

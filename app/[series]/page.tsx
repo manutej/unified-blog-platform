@@ -150,7 +150,7 @@ export default async function SeriesPage({
             No blogs found
           </h3>
           <p className="text-neutral-600 dark:text-neutral-400 mb-4">
-            Blog content for this series hasn't been migrated yet.
+            Blog content for this series hasn&apos;t been migrated yet.
           </p>
           <Link
             href="/"

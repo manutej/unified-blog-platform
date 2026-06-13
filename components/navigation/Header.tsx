@@ -12,17 +12,17 @@
 import Link from 'next/link';
 import { useTheme } from 'next-themes';
 import { getAllSeries } from '@/lib/series-config';
-import { useState, useEffect } from 'react';
+import { useSyncExternalStore } from 'react';
+
+// Stable no-op subscription so useSyncExternalStore only distinguishes
+// server snapshot (false) from client snapshot (true).
+const emptySubscribe = () => () => {};
 
 export default function Header() {
-  const { theme, setTheme, resolvedTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
+  const { setTheme, resolvedTheme } = useTheme();
+  // Avoid hydration mismatch: false during SSR/hydration, true on the client.
+  const mounted = useSyncExternalStore(emptySubscribe, () => true, () => false);
   const series = getAllSeries();
-
-  // Avoid hydration mismatch
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   return (
     <header className="bg-white dark:bg-neutral-900 border-b border-neutral-200 dark:border-neutral-700 sticky top-0 z-50 backdrop-blur-sm bg-white/95 dark:bg-neutral-900/95">

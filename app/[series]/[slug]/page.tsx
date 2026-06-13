@@ -151,7 +151,7 @@ export default async function BlogPage({
               <svg className="w-5 h-5" style={{ color: series.colors.primary }} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
-              What You'll Learn
+              What You&apos;ll Learn
             </h2>
             <ul className="space-y-2 text-neutral-700 dark:text-neutral-300">
               {metadata.learningObjectives.map((objective, index) => (

@@ -19,7 +19,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
 import { useTheme } from 'next-themes';
-import { useState, useEffect } from 'react';
+import { useSyncExternalStore, type CSSProperties, type ComponentPropsWithoutRef } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark, oneLight } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
@@ -27,11 +27,11 @@ import { oneDark, oneLight } from 'react-syntax-highlighter/dist/esm/styles/pris
  * Remove background colors from syntax theme tokens
  * This prevents white/light background bleed-through on individual code spans
  */
-const stripBackgrounds = (theme: Record<string, any>) =>
+const stripBackgrounds = (theme: Record<string, CSSProperties>) =>
   Object.fromEntries(
     Object.entries(theme).map(([key, value]) => {
       if (typeof value === 'object' && value !== null) {
-        const { background, backgroundColor, ...rest } = value as Record<string, unknown>;
+        const { background, backgroundColor, ...rest } = value;
         return [key, rest];
       }
       return [key, value];
@@ -63,14 +63,15 @@ interface BlogContentProps {
   content: string;
 }
 
+// Stable no-op subscription so useSyncExternalStore only distinguishes
+// server snapshot (false) from client snapshot (true).
+const emptySubscribe = () => () => {};
+
 export default function BlogContent({ content }: BlogContentProps) {
   const { resolvedTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  // Prevent hydration mismatch - only render theme-aware content after mount
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  // Prevent hydration mismatch - only render theme-aware content after mount.
+  // false during SSR/hydration, true on the client; no setState-in-effect needed.
+  const mounted = useSyncExternalStore(emptySubscribe, () => true, () => false);
 
   // Get current theme configuration (default to light for SSR)
   const currentTheme = mounted && resolvedTheme === 'dark' ? 'dark' : 'light';
@@ -105,7 +106,7 @@ export default function BlogContent({ content }: BlogContentProps) {
             />
           ),
           // Syntax highlighted code blocks
-          code({ node, inline, className, children, ...props }: any) {
+          code({ node, inline, className, children, ...props }: ComponentPropsWithoutRef<'code'> & { node?: unknown; inline?: boolean }) {
             const match = /language-(\w+)/.exec(className || '');
             const language = match ? match[1] : '';
             // Strip trailing newline and stray backticks from first/last lines
