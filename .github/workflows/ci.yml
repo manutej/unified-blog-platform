@@ -26,11 +26,11 @@ jobs:
       - name: Type check
         run: npm run type-check
 
-      # Lint surfaces pre-existing app warnings/errors but must not block the
-      # pipeline; keep it visible without failing the build.
+      # Lint is a hard gate: the 7 previously-failing errors were fixed at
+      # source (no baseline override needed). Remaining warnings stay visible
+      # but do not fail the run.
       - name: Lint
         run: npm run lint
-        continue-on-error: true
 
       - name: Unit & accessibility tests
         run: npm run test:coverage
