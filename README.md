@@ -197,7 +197,7 @@ The unified system uses the **Educational Authority** composite archetype:
 | **3. Accessible** | WCAG 2.1 AA, ARIA labels, keyboard nav, 4.5:1 contrast | ✅ |
 | **4. Secure** | DOMPurify XSS prevention, CSP headers, secure links | ✅ |
 | **5. Performant** | Next.js optimization, lazy loading, static export | ✅ |
-| **6. Tested** | TypeScript, comprehensive JSDoc (testing suite pending) | ⚠️ |
+| **6. Tested** | TypeScript, Jest unit + jest-axe a11y tests, Playwright visual specs, CI | ✅ |
 | **7. Documented** | Architecture docs, component API, inline JSDoc | ✅ |
 
 ---
@@ -310,12 +310,46 @@ The system is configured for static export with optimized images and CSP headers
 ## 🔧 Available Scripts
 
 ```bash
-npm run dev          # Start development server
-npm run build        # Build for production (static export)
-npm run start        # Start production server
-npm run lint         # Run ESLint
-npm run type-check   # TypeScript type checking
+npm run dev            # Start development server
+npm run build          # Build for production (static export)
+npm run start          # Start production server
+npm run lint           # Run ESLint (flat config; eslint-config-next)
+npm run type-check     # TypeScript type checking (tsc --noEmit)
+
+# Tests
+npm test               # Run Jest unit + accessibility tests
+npm run test:watch     # Run Jest in watch mode (interactive)
+npm run test:coverage  # Run Jest with a coverage report
+npm run test:a11y      # Run only the accessibility (jest-axe) tests
+npm run test:visual    # Run Playwright visual specs (see Testing below)
 ```
+
+---
+
+## 🧪 Testing
+
+Unit and accessibility tests live in `__tests__/` and run on Jest via
+`next/jest` (no extra Babel setup):
+
+```bash
+npm test               # all Jest unit + a11y tests
+npm run test:coverage  # with coverage
+npm run test:a11y      # accessibility-only (jest-axe)
+```
+
+The Playwright **visual** specs in `test-screenshots/` are end-to-end browser
+tests that capture the deployed blog pages. They are configured via
+`playwright.config.ts` but are **not** part of the default test or CI run —
+they require browsers and target a live deployment:
+
+```bash
+npx playwright install --with-deps chromium
+npm run test:visual
+```
+
+CI (`.github/workflows/ci.yml`) runs type-check, lint (non-blocking),
+the Jest test suite with coverage, and the production build on every push and
+pull request.
 
 ---
 
